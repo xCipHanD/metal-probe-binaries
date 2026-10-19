@@ -1,38 +1,9 @@
 {
   "schema": 1,
-  "build_id": "f2c9378cac07049131629af5f43b6be2ff44b466cb37db4b44416e57e3da8f2e",
+  "build_id": "598d047c292ff9a1bb7ac771ae71eab34a1cbaf1f887dd3155bb9dd11c8677b3",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
-    "transfer-pilot-0": {
-      "experiment": "cache-transfer",
-      "mode": "pilot",
-      "seed": 0,
-      "smoke": false,
-      "queries": 576,
-      "uncompressed_sha256": "e4f7ff2b2a07fa23e39a0fe97580a5f1e1739fe4e39fc5e30f0855bd0217a6af"
-    },
-    "transfer-full-0": {
-      "experiment": "cache-transfer",
-      "mode": "full",
-      "seed": 0,
-      "smoke": false,
-      "queries": 4608,
-      "uncompressed_sha256": "d7ccb537c4eb8b9a81ba3879d5168f485eba218a3b06bf9090f2351ccf78752d"
-    },
-    "transfer-full-1": {
-      "experiment": "cache-transfer",
-      "mode": "full",
-      "seed": 1,
-      "smoke": false,
-      "queries": 4608,
-      "uncompressed_sha256": "9b48e993315f21c4ac549491c8f724b3525db18a524bfcef8cad9c14fa79122b"
-    },
-    "clock-audit-0": {
-      "experiment": "clock-audit",
-      "queries": 256,
-      "uncompressed_sha256": "a4e297e0f7b1505e9379d2b7a92612d8e8ea6599df486ba4696e491fc98e3326"
-    },
     "smoke-original-0": {
       "mode": "pilot",
       "kind": "original",
@@ -155,21 +126,13 @@
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "2befc50fd92463edb915a1d79809ab0519147b4ca93f64e8f60e6396c6b0bfa3",
+    ".github/workflows/run.yml": "6e700db10b8beedc3f41934e3d67c5488178253646dd14c650c8ab6500e219d6",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
-    "bin/cache-transfer": "bdbc355cabf7a3a823d7020fc22ccfb798be3cab095cda1245a71a43460d0737",
-    "bin/cache-transfer.metallib": "f77107705335ea6040a45b5a495642773e5c06190c50b652978d9c0bb8694999",
-    "inputs/transfer-pilot-0.bin.gz": "0c524656158ac24ee5663036ffe7ef20f6d815d1408123ee42ffadbc1ec388f6",
-    "inputs/transfer-full-0.bin.gz": "4c49d213ab6058cdf41570c6642a4f919a4c64948d6bf5bf71490543672c866e",
-    "inputs/transfer-full-1.bin.gz": "b0eb57b15dc91e939ec7b0e78a440b5ba3a23a798e10af40e81bf911b5750b47",
-    "bin/clock-audit": "4abda0c74b4c16e350a80d6c71c1215e8d9e342ef8c74e18721e30c772eff858",
-    "bin/clock-audit.metallib": "18c63a294af2411483a3e7b97656b2f4f9ee45f58e3e2c84ec41c509f51c76a8",
-    "inputs/clock-audit-0.bin.gz": "e9b163736508b57f252c325d7635b8f46d47d1394beebad59efc3f8f31833899",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
