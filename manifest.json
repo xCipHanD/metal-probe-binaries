@@ -1,11 +1,12 @@
 {
   "schema": 1,
-  "build_id": "df91bd7e7df180cbd2c01f2ba0798aa2d8e361cac127aa111770890fc4cf7fc1",
+  "build_id": "a1639b86ba387f3b1b9f50b2c730a5b6e3c294aec13044b6ca6d7cbbae94cdd6",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
     "two-batch-0": {
-      "experiment": "fanout-original-timer-factorial",
+      "experiment": "fanout-original-timer-fixed",
+      "protocol": "FANFIX02",
       "rounds": 1280,
       "repeats_per_case": 8,
       "threads": [
@@ -34,17 +35,18 @@
         "selected source warms decoys",
         "all sources warm targets"
       ],
-      "producer_lines": 64,
-      "reader_lines": 8,
+      "producer_lines": 8,
+      "reader_lines": 1,
       "reader_targets_disjoint": true,
       "queries": 1280,
-      "records": 81920,
+      "records": 10240,
       "scan_lines": 64,
       "scan_before": "every first and repeated increment",
-      "scan_excludes": "all target lines and current target set under existing XOR model",
+      "scan_excludes": "common target set, all trace/flag lines, all atomic decoys",
+      "trace": "one line per reader in the same target page and a different recovered set; after local counters finish; no grid drain spin",
       "fresh_region_per_query_bytes": 131072,
       "matched_relative_layout_per_repeat": true,
-      "uncompressed_sha256": "76d6bc738cab91eb9d78f355aaad72df31a19176eb13dd4e889a6c298305f6d4"
+      "uncompressed_sha256": "eac8b1678605cb12d660f9d479bbf24736973f85b255d3fd216d04be9ce38dd5"
     },
     "smoke-original-0": {
       "mode": "pilot",
@@ -175,9 +177,9 @@
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
-    "bin/two-batch": "7fd2048662682b5acef7100f4ccd95b57e876454726675ac79252776cbac8288",
-    "bin/two-batch.metallib": "336192b1db01f52ef432b65bf27512a8253bb6768ab7c450c47120e7d67b6279",
-    "inputs/two-batch-0.bin.gz": "c5d948de6d14159ea315e12521b5be0b4d876d26bf9e0aed3331d8d974113cd2",
+    "bin/two-batch": "20a7f1be8aa1c5fea5164dc71b17011dd867c92def6759eb3c8419e0c8475be4",
+    "bin/two-batch.metallib": "e6c26c7bebfac15a599f3b4e1549146989ecc19057130c3738b6cc78f915a6d0",
+    "inputs/two-batch-0.bin.gz": "661dc192e59d2bb2aa5a35e0d938d507829460c7ce0f979a3137189b4bca1a75",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
