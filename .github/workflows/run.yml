@@ -38,8 +38,8 @@ jobs:
           if [ "$CASE" = calibration-compare ] || [ "$CASE" = calibration-padding ] || [ "$CASE" = calibration-diagnostic ]; then
             INPUT=pilot-original-0
             LABELS="current-first split zero-end split-zero current-last"
-            if [ "$CASE" = calibration-padding ]; then LABELS="static-first separate separate-static static-last"; fi
-            if [ "$CASE" = calibration-diagnostic ]; then INPUT=diagnostic-original-0; LABELS="separate separate-static"; fi
+            if [ "$CASE" = calibration-padding ]; then LABELS="static-first fenced-lane0 fenced-uniform static-last"; fi
+            if [ "$CASE" = calibration-diagnostic ]; then INPUT=diagnostic-original-0; LABELS="fenced-lane0 fenced-uniform"; fi
             gzip -dc "inputs/$INPUT.bin.gz" > artifacts/input.bin
             for LABEL in $LABELS; do
               VARIANT="$LABEL"
