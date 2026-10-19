@@ -1,9 +1,33 @@
 {
   "schema": 1,
-  "build_id": "598d047c292ff9a1bb7ac771ae71eab34a1cbaf1f887dd3155bb9dd11c8677b3",
+  "build_id": "aa146f23c5f8106a84c1d650d6af92d85af159255e858ec32edeb39ec3f9a2e7",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
+    "transfer-pilot-0": {
+      "experiment": "cache-transfer",
+      "mode": "pilot",
+      "seed": 0,
+      "smoke": false,
+      "queries": 384,
+      "uncompressed_sha256": "c1e9ad0dacd4c89a9f4f531fa8d8677ff9db2185eb3bcc6194bd80874081fa54"
+    },
+    "transfer-full-0": {
+      "experiment": "cache-transfer",
+      "mode": "full",
+      "seed": 0,
+      "smoke": false,
+      "queries": 6144,
+      "uncompressed_sha256": "501da861fc3e4e2449846f4884c542c5477774518ea822308f1b51a60242bd84"
+    },
+    "transfer-full-1": {
+      "experiment": "cache-transfer",
+      "mode": "full",
+      "seed": 1,
+      "smoke": false,
+      "queries": 6144,
+      "uncompressed_sha256": "bad7f8114fc49f250883546dcea403a0c0882d5cdbc9b261952e2bd7d769f8a5"
+    },
     "smoke-original-0": {
       "mode": "pilot",
       "kind": "original",
@@ -126,13 +150,18 @@
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "6e700db10b8beedc3f41934e3d67c5488178253646dd14c650c8ab6500e219d6",
+    ".github/workflows/run.yml": "bc5f1a811d4e9f4194a4408ffe8ff7d3834118410cd36650ece6a124ea3a87ef",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
+    "bin/cache-transfer": "7cc2fd5b5665cf6fce4efbba8dc7b87330505c7362d496f0356548e5a62ee162",
+    "bin/cache-transfer.metallib": "41290ef56262bf81ae2a95692c2c54fa7a4fe6c9cfec42522f1e87fa130f8a3c",
+    "inputs/transfer-pilot-0.bin.gz": "93a28ef6bdef72665f16fc4fe00cf8a3155f5528183229e311a70c153ac8d6da",
+    "inputs/transfer-full-0.bin.gz": "9cc9ba26dfc4736ae3539c0b6d19897c89d8e9293b5d2d4b22f6ad48add7a767",
+    "inputs/transfer-full-1.bin.gz": "226f619a40ae1227a5b90fd8bbe2b55f012136c9aa5286ea4306c698211090fb",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
