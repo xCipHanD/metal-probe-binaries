@@ -55,9 +55,9 @@ jobs:
             LIB=bin/prefetch-tail.metallib
             if [ "$CASE" = calibration-diagnostic ]; then
               CASE=diagnostic-original-0
-              LIB=bin/calibration-split.metallib
+              LIB=bin/calibration-armed-static.metallib
               printf '%s\n' "$CASE" > artifacts/case.txt
-              printf '%s\n' split > artifacts/variant.txt
+              printf '%s\n' armed-static > artifacts/variant.txt
             fi
             gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
             ./bin/prefetch-tail artifacts/input.bin "$LIB" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
