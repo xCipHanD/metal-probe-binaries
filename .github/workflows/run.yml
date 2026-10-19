@@ -35,10 +35,12 @@ jobs:
           cp manifest.json artifacts/bundle-manifest.json
           printf '%s\n' "$CASE" > artifacts/case.txt
           chmod +x bin/prefetch-tail
-          if [ "$CASE" = calibration-compare ] || [ "$CASE" = calibration-padding ]; then
-            gzip -dc inputs/pilot-original-0.bin.gz > artifacts/input.bin
+          if [ "$CASE" = calibration-compare ] || [ "$CASE" = calibration-padding ] || [ "$CASE" = calibration-diagnostic ]; then
+            INPUT=pilot-original-0
             LABELS="current-first split zero-end split-zero current-last"
-            if [ "$CASE" = calibration-padding ]; then LABELS="static-first armed-dynamic armed-static static-last"; fi
+            if [ "$CASE" = calibration-padding ]; then LABELS="static-first separate separate-static static-last"; fi
+            if [ "$CASE" = calibration-diagnostic ]; then INPUT=diagnostic-original-0; LABELS="separate separate-static"; fi
+            gzip -dc "inputs/$INPUT.bin.gz" > artifacts/input.bin
             for LABEL in $LABELS; do
               VARIANT="$LABEL"
               case "$LABEL" in current-*) VARIANT=current ;; split-first|split-last) VARIANT=split ;; static-first|static-last) VARIANT=static-pad ;; esac
@@ -46,19 +48,13 @@ jobs:
               mkdir -p "$DEST"
               cp manifest.json "$DEST/bundle-manifest.json"
               cp artifacts/runner.txt "$DEST/runner.txt"
-              printf '%s\n' pilot-original-0 > "$DEST/case.txt"
+              printf '%s\n' "$INPUT" > "$DEST/case.txt"
               printf '%s\n' "$VARIANT" > "$DEST/variant.txt"
               (cd "$GITHUB_WORKSPACE/artifacts/$LABEL"; "$GITHUB_WORKSPACE/bin/prefetch-tail" "$GITHUB_WORKSPACE/artifacts/input.bin" "$GITHUB_WORKSPACE/bin/calibration-$VARIANT.metallib" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt)
               tail -n 1 "$DEST/probe.stderr.txt" >> "$GITHUB_STEP_SUMMARY"
             done
           else
             LIB=bin/prefetch-tail.metallib
-            if [ "$CASE" = calibration-diagnostic ]; then
-              CASE=diagnostic-original-0
-              LIB=bin/calibration-armed-static.metallib
-              printf '%s\n' "$CASE" > artifacts/case.txt
-              printf '%s\n' armed-static > artifacts/variant.txt
-            fi
             gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
             ./bin/prefetch-tail artifacts/input.bin "$LIB" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
             tail -n 1 artifacts/probe.stderr.txt >> "$GITHUB_STEP_SUMMARY"

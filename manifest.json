@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "9139570728cbb83a31b9c3a3e083e8902302bc6902a7d6913aa73284cb6deac0",
+  "build_id": "91b3d183ea62777f6ec2f1a3e7409856c1bd59813dd9c81d0a91c30d18a9f579",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -46,9 +46,9 @@
     }
   },
   "files": {
-    "bin/prefetch-tail": "ff90537ee4231fddc0529540be96908e9de8635dca027ac3414c3aade46f01e5",
+    "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "7c89656101952b1458661a10f9e00532b291e0bb298a781db72214284dfab2f7",
+    ".github/workflows/run.yml": "12450cbe2c8b34b5c474860a7d096050e723593b991b82b3a5916859f65a3f6e",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/calibration-current.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
@@ -60,6 +60,8 @@
     "bin/calibration-static-pad.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
     "bin/calibration-armed-dynamic.metallib": "844a51b20eb3b5ef3cb324579e712ad8de3f8d0e9918310860e802a7220c06fc",
     "bin/calibration-armed-static.metallib": "af490b2b0f312b1493e58019fd6899a25a026c6e289ff9da38cc5dca3027a359",
+    "bin/calibration-separate.metallib": "bedb173fb35fd209890a00799b3b96056f63ed409c3db6a60a5a78268c717d33",
+    "bin/calibration-separate-static.metallib": "1ee72c524dc4cd5c566cb1adfb29a70adde49a630a58beeafea5058e4c627c1d",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
@@ -75,8 +77,8 @@
   ],
   "padding_comparison_order": [
     "static-first",
-    "armed-dynamic",
-    "armed-static",
+    "separate",
+    "separate-static",
     "static-last"
   ]
 }
