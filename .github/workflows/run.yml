@@ -7,7 +7,7 @@ on:
       case:
         description: Frozen binary input case
         type: choice
-        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0]
+        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, calibration-compare]
         default: smoke-original-0
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           case "$CASE" in
-            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0) ;;
+            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|calibration-compare) ;;
             *) exit 2 ;;
           esac
           shasum -a 256 -c MANIFEST.sha256
@@ -34,16 +34,32 @@ jobs:
           { sw_vers; uname -m; file bin/prefetch-tail; } > artifacts/runner.txt
           cp manifest.json artifacts/bundle-manifest.json
           printf '%s\n' "$CASE" > artifacts/case.txt
-          gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
           chmod +x bin/prefetch-tail
-          ./bin/prefetch-tail artifacts/input.bin bin/prefetch-tail.metallib > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
-          tail -n 1 artifacts/probe.stderr.txt >> "$GITHUB_STEP_SUMMARY"
+          if [ "$CASE" = calibration-compare ]; then
+            gzip -dc inputs/pilot-original-0.bin.gz > artifacts/input.bin
+            for LABEL in current-first split zero-end split-zero current-last; do
+              VARIANT="$LABEL"
+              case "$LABEL" in current-*) VARIANT=current ;; esac
+              DEST="$GITHUB_WORKSPACE/artifacts/$LABEL/artifacts"
+              mkdir -p "$DEST"
+              cp manifest.json "$DEST/bundle-manifest.json"
+              cp artifacts/runner.txt "$DEST/runner.txt"
+              printf '%s\n' pilot-original-0 > "$DEST/case.txt"
+              printf '%s\n' "$VARIANT" > "$DEST/variant.txt"
+              (cd "$GITHUB_WORKSPACE/artifacts/$LABEL"; "$GITHUB_WORKSPACE/bin/prefetch-tail" "$GITHUB_WORKSPACE/artifacts/input.bin" "$GITHUB_WORKSPACE/bin/calibration-$VARIANT.metallib" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt)
+              tail -n 1 "$DEST/probe.stderr.txt" >> "$GITHUB_STEP_SUMMARY"
+            done
+          else
+            gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
+            ./bin/prefetch-tail artifacts/input.bin bin/prefetch-tail.metallib > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
+            tail -n 1 artifacts/probe.stderr.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: binary-probe-${{ env.CASE }}
           path: |
-            artifacts/*.csv
-            artifacts/*.json
-            artifacts/*.txt
+            artifacts/**/*.csv
+            artifacts/**/*.json
+            artifacts/**/*.txt
           retention-days: 14
