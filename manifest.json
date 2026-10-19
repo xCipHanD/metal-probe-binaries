@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "4e4e1dde53a09ba2339746e9f07bd65ee8df0b1a855e5a2afaa8c899a35b0016",
+  "build_id": "3cd248dd2e2e8a15b6bbbee26f174aab5d3f3139a16c228f7811898f0726e23e",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -167,8 +167,8 @@
     "inputs/transfer-pilot-0.bin.gz": "0c524656158ac24ee5663036ffe7ef20f6d815d1408123ee42ffadbc1ec388f6",
     "inputs/transfer-full-0.bin.gz": "4c49d213ab6058cdf41570c6642a4f919a4c64948d6bf5bf71490543672c866e",
     "inputs/transfer-full-1.bin.gz": "b0eb57b15dc91e939ec7b0e78a440b5ba3a23a798e10af40e81bf911b5750b47",
-    "bin/clock-audit": "8decc63a0c4421b17c00ccac23114df05dbf05444f9b2de7dd37d92334c4388c",
-    "bin/clock-audit.metallib": "a1ecc2c765b8d251011713a5cee9cdeca02d96480a1d287a18a7f61e9ebacc25",
+    "bin/clock-audit": "4abda0c74b4c16e350a80d6c71c1215e8d9e342ef8c74e18721e30c772eff858",
+    "bin/clock-audit.metallib": "18c63a294af2411483a3e7b97656b2f4f9ee45f58e3e2c84ec41c509f51c76a8",
     "inputs/clock-audit-0.bin.gz": "e9b163736508b57f252c325d7635b8f46d47d1394beebad59efc3f8f31833899",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
