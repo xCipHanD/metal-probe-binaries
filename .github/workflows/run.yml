@@ -7,7 +7,7 @@ on:
       case:
         description: Frozen binary input case
         type: choice
-        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, calibration-compare]
+        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, calibration-compare, calibration-diagnostic]
         default: smoke-original-0
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           case "$CASE" in
-            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|calibration-compare) ;;
+            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|calibration-compare|calibration-diagnostic) ;;
             *) exit 2 ;;
           esac
           shasum -a 256 -c MANIFEST.sha256
@@ -50,8 +50,15 @@ jobs:
               tail -n 1 "$DEST/probe.stderr.txt" >> "$GITHUB_STEP_SUMMARY"
             done
           else
+            LIB=bin/prefetch-tail.metallib
+            if [ "$CASE" = calibration-diagnostic ]; then
+              CASE=diagnostic-original-0
+              LIB=bin/calibration-split.metallib
+              printf '%s\n' "$CASE" > artifacts/case.txt
+              printf '%s\n' split > artifacts/variant.txt
+            fi
             gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
-            ./bin/prefetch-tail artifacts/input.bin bin/prefetch-tail.metallib > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
+            ./bin/prefetch-tail artifacts/input.bin "$LIB" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
             tail -n 1 artifacts/probe.stderr.txt >> "$GITHUB_STEP_SUMMARY"
           fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
