@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "fba2d7fa05cae558dd97eca33d3bd6493a3152c67429f86f8cb7b2fb4f112327",
+  "build_id": "0a0a3c18283359f90557b7707024fc5ec03badff5fb62573df127e69a54edf52",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -43,18 +43,47 @@
       "smoke": false,
       "queries": 12288,
       "uncompressed_sha256": "11e74c1bb106e1aa30a1b694c3b0ceaf86cfd3793840c6319f2b2235adf73dfe"
+    },
+    "ladder-pilot-0": {
+      "experiment": "eviction-ladder",
+      "mode": "pilot",
+      "seed": 0,
+      "smoke": false,
+      "queries": 2944,
+      "uncompressed_sha256": "dd76bf3617e55c6eedb72a669411865b58280ecf7e62df7da6e8763b5d43d3a5"
+    },
+    "ladder-full-0": {
+      "experiment": "eviction-ladder",
+      "mode": "full",
+      "seed": 0,
+      "smoke": false,
+      "queries": 8704,
+      "uncompressed_sha256": "f4c1c32583b8e082641bf124e00ee4dd39f158db943d9b5dbd6211ff17e4ba5f"
+    },
+    "ladder-full-1": {
+      "experiment": "eviction-ladder",
+      "mode": "full",
+      "seed": 1,
+      "smoke": false,
+      "queries": 8704,
+      "uncompressed_sha256": "d5393f25056284a1a00cab9f04a6ee1a87dc1f90c7a9cb8cea649cae01ef324b"
     }
   },
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "f179c03aa729656fef128d5d4eb4b0f69a21f4c07b92a9f075056bfb691f2cbd",
+    ".github/workflows/run.yml": "2d99e0a1035a7766d52860dd69d616f1e60af3c6cd17c1438788c2714bcc7035",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
+    "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
+    "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
     "inputs/full-random-1.bin.gz": "a73acad7572818644d0a2cdbd1ad2ad2d0ce35bb715be7915b8e98e16f19a79c",
-    "inputs/diagnostic-original-0.bin.gz": "a66bb8a3952157d0482a7830fd267b1e30b52cf241995a60cb1cb6d7ad235924"
+    "inputs/diagnostic-original-0.bin.gz": "a66bb8a3952157d0482a7830fd267b1e30b52cf241995a60cb1cb6d7ad235924",
+    "inputs/ladder-pilot-0.bin.gz": "a863a3cc964f7b195e803771bf7fbddbbfcd26770a25553f9a2991044e381b08",
+    "inputs/ladder-full-0.bin.gz": "bd850749297ffcbbe572e7b8d2a8aeb551eef3b19d70a4fcd53bd31280be9ef8",
+    "inputs/ladder-full-1.bin.gz": "1e757af8ddaa421b2089f72071763b585782727d4df6401817bcd5f2002e488f"
   }
 }
