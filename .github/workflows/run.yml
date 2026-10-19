@@ -14,7 +14,7 @@ permissions:
 jobs:
   probe:
     runs-on: macos-15
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       CASE: ${{ inputs.case || 'smoke-original-0' }}
     steps:
