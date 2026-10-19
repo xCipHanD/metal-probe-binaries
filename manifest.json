@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "0a0a3c18283359f90557b7707024fc5ec03badff5fb62573df127e69a54edf52",
+  "build_id": "36314a4f00e8c51584f354435986f2e0b0f8034321a48dc519e77cf5a73ce5b0",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -67,16 +67,72 @@
       "smoke": false,
       "queries": 8704,
       "uncompressed_sha256": "d5393f25056284a1a00cab9f04a6ee1a87dc1f90c7a9cb8cea649cae01ef324b"
+    },
+    "tlb-pilot-0": {
+      "experiment": "cache-controls",
+      "family": "tlb",
+      "mode": "pilot",
+      "seed": 0,
+      "smoke": false,
+      "queries": 6144,
+      "uncompressed_sha256": "a2e2f3bf9b0f01256e960a0dff5704fcad0eb2b7fc9a0137e1ea6f2d9728877b"
+    },
+    "tlb-full-0": {
+      "experiment": "cache-controls",
+      "family": "tlb",
+      "mode": "full",
+      "seed": 0,
+      "smoke": false,
+      "queries": 12288,
+      "uncompressed_sha256": "43698a9585495256954960ba8e4728cbb60a53e056a34fb9519c95b2a833198e"
+    },
+    "tlb-full-1": {
+      "experiment": "cache-controls",
+      "family": "tlb",
+      "mode": "full",
+      "seed": 1,
+      "smoke": false,
+      "queries": 12288,
+      "uncompressed_sha256": "150ac60fd90bab0f46b6a3e974989cbe3ec90f7f0ad9523c263fb5e7e2dba286"
+    },
+    "cpu-pilot-0": {
+      "experiment": "cache-controls",
+      "family": "cpu",
+      "mode": "pilot",
+      "seed": 0,
+      "smoke": false,
+      "queries": 2752,
+      "uncompressed_sha256": "0d62a55e73f7d70383e7af858a1867d668b020f82f8fa3409e069f7372b58c0c"
+    },
+    "cpu-full-0": {
+      "experiment": "cache-controls",
+      "family": "cpu",
+      "mode": "full",
+      "seed": 0,
+      "smoke": false,
+      "queries": 11008,
+      "uncompressed_sha256": "88e82016b3c6aced26cf867c1a8287184450a8e519c3fb0539eda9d18bcfead3"
+    },
+    "cpu-full-1": {
+      "experiment": "cache-controls",
+      "family": "cpu",
+      "mode": "full",
+      "seed": 1,
+      "smoke": false,
+      "queries": 11008,
+      "uncompressed_sha256": "db32b72e09da58af10b4a7d39ae6215ef772088669f067095d815d2b92cee768"
     }
   },
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "2d99e0a1035a7766d52860dd69d616f1e60af3c6cd17c1438788c2714bcc7035",
+    ".github/workflows/run.yml": "6e700db10b8beedc3f41934e3d67c5488178253646dd14c650c8ab6500e219d6",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
+    "bin/cache-controls": "fb6e3953b72e1f91dfa6cd9c91e344fc2851f8d8f8aee87b441c95706c8393cc",
+    "bin/cache-controls.metallib": "56c2c0ff51a301db873edeb002b39505b256cdcf67d1f8453b764118fd7cc9c1",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
@@ -84,6 +140,12 @@
     "inputs/diagnostic-original-0.bin.gz": "a66bb8a3952157d0482a7830fd267b1e30b52cf241995a60cb1cb6d7ad235924",
     "inputs/ladder-pilot-0.bin.gz": "a863a3cc964f7b195e803771bf7fbddbbfcd26770a25553f9a2991044e381b08",
     "inputs/ladder-full-0.bin.gz": "bd850749297ffcbbe572e7b8d2a8aeb551eef3b19d70a4fcd53bd31280be9ef8",
-    "inputs/ladder-full-1.bin.gz": "1e757af8ddaa421b2089f72071763b585782727d4df6401817bcd5f2002e488f"
+    "inputs/ladder-full-1.bin.gz": "1e757af8ddaa421b2089f72071763b585782727d4df6401817bcd5f2002e488f",
+    "inputs/tlb-pilot-0.bin.gz": "7abe386a40f275b58f33d5a29bc9b768491d69b786420497364a6ce5ca2504b9",
+    "inputs/tlb-full-0.bin.gz": "13844a8ab9d73ab9926dfc3b61d284668ca0ad44a9b3aa2638f952105d11e49f",
+    "inputs/tlb-full-1.bin.gz": "143aac269d8eee76dfef567da535fe779e41e02f669e01758d5fa2bc3050772e",
+    "inputs/cpu-pilot-0.bin.gz": "4e874b5681593f1db4c52256f2a3c443e691986cf98729f20f1aa3bb4ad181d4",
+    "inputs/cpu-full-0.bin.gz": "0b80b6a5f2e4ac630df3ebf9b166385cc6a9527c00783117efa7b4f23c684538",
+    "inputs/cpu-full-1.bin.gz": "1533ecce91e477414599c7478b8e63d6df8baa2c7b0fb89d07e8e4446fa51da7"
   }
 }

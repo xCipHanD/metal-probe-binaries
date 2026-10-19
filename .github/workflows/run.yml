@@ -7,7 +7,7 @@ on:
       case:
         description: Frozen binary input case
         type: choice
-        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, ladder-pilot-0, ladder-full-0, ladder-full-1]
+        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, ladder-pilot-0, ladder-full-0, ladder-full-1, tlb-pilot-0, tlb-full-0, tlb-full-1, cpu-pilot-0, cpu-full-0, cpu-full-1]
         default: smoke-original-0
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           case "$CASE" in
-            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|ladder-pilot-0|ladder-full-0|ladder-full-1) ;;
+            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|ladder-pilot-0|ladder-full-0|ladder-full-1|tlb-pilot-0|tlb-full-0|tlb-full-1|cpu-pilot-0|cpu-full-0|cpu-full-1) ;;
             *) exit 2 ;;
           esac
           shasum -a 256 -c MANIFEST.sha256
@@ -37,6 +37,7 @@ jobs:
           HOST=bin/prefetch-tail
           LIB=bin/prefetch-tail.metallib
           case "$CASE" in ladder-*) HOST=bin/eviction-ladder; LIB=bin/eviction-ladder.metallib ;; esac
+          case "$CASE" in tlb-*|cpu-*) HOST=bin/cache-controls; LIB=bin/cache-controls.metallib ;; esac
           chmod +x "$HOST"
           gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
           "$HOST" artifacts/input.bin "$LIB" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
