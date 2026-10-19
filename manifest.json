@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "target": "macOS arm64 >=14",
+  "metal_language": "3.1",
+  "cases": {
+    "smoke-original-0": {
+      "mode": "pilot",
+      "kind": "original",
+      "seed": 0,
+      "smoke": true,
+      "queries": 128,
+      "uncompressed_sha256": "65877066bb4ee0b1e4c4245871ad8c8f1929c14d49bd7bba63903e11bc5788ce"
+    },
+    "pilot-original-0": {
+      "mode": "pilot",
+      "kind": "original",
+      "seed": 0,
+      "smoke": false,
+      "queries": 4096,
+      "uncompressed_sha256": "3e42c69c9a950b3a7e5e2267a93c9fe35db7905827a8e441065dcb46face5795"
+    },
+    "full-original-0": {
+      "mode": "full",
+      "kind": "original",
+      "seed": 0,
+      "smoke": false,
+      "queries": 12288,
+      "uncompressed_sha256": "f5852f4d08e9e5faa3b4d1a561518091bc3ed613dcee1a1b5b14f36373353731"
+    },
+    "full-random-1": {
+      "mode": "full",
+      "kind": "random",
+      "seed": 1,
+      "smoke": false,
+      "queries": 12288,
+      "uncompressed_sha256": "9b87ed723952596de7ac7fe6f5941bb1a34db51d37c9840cf5223944a8290b4f"
+    },
+    "diagnostic-original-0": {
+      "mode": "diagnostic",
+      "kind": "original",
+      "seed": 0,
+      "smoke": false,
+      "queries": 12288,
+      "uncompressed_sha256": "11e74c1bb106e1aa30a1b694c3b0ceaf86cfd3793840c6319f2b2235adf73dfe"
+    }
+  },
+  "files": {
+    "bin/prefetch-tail": "ff90537ee4231fddc0529540be96908e9de8635dca027ac3414c3aade46f01e5",
+    "bin/prefetch-tail.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
+    ".github/workflows/run.yml": "f88d6f21ec9bcd8bd7dbf87c03148aaaeacf7fd987222ff005626643da8ead26",
+    ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
+    "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
+    "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
+    "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
+    "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
+    "inputs/full-random-1.bin.gz": "a73acad7572818644d0a2cdbd1ad2ad2d0ce35bb715be7915b8e98e16f19a79c",
+    "inputs/diagnostic-original-0.bin.gz": "a66bb8a3952157d0482a7830fd267b1e30b52cf241995a60cb1cb6d7ad235924"
+  }
+}
