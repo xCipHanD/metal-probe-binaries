@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "b3838da8325030d73cdd008e2a4deb22ff447c531a4e403c896a9fb081766392",
+  "build_id": "68c7b3c8dbab4455e8c4296b81e709e084a774e3377e9451e3f16ba42994f278",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -47,7 +47,7 @@
   },
   "files": {
     "bin/prefetch-tail": "ff90537ee4231fddc0529540be96908e9de8635dca027ac3414c3aade46f01e5",
-    "bin/prefetch-tail.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
+    "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
     ".github/workflows/run.yml": "4bfbb9f0ba6a9599b40be7d48971e7ee28439d75f1042092c801fc95aa33ec4c",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
