@@ -1,25 +1,50 @@
 {
   "schema": 1,
-  "build_id": "060046efa46399dc56b4ce3d17532832ef89a7c683846d48c80f7cec147cf86e",
+  "build_id": "7e16fd595c911783d01faa9d7d966e6872d377539f429a2eb6d3023dca4f0cd4",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
     "two-batch-0": {
-      "experiment": "two-batch-submission",
-      "rounds": 96,
-      "repeats_per_condition": 32,
-      "conditions": [
-        "same-command",
-        "split-queued-no-wait",
-        "split-wait"
+      "experiment": "fanout-original-timer-factorial",
+      "rounds": 1280,
+      "repeats_per_case": 8,
+      "threads": [
+        256,
+        1024
       ],
-      "split_buffers_encoded_before_submit": true,
-      "pairing": "B_i reads A_i",
-      "queries": 768,
+      "sources": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "conditions": [
+        "single-dispatch",
+        "serial-no-barrier",
+        "serial-barrier",
+        "concurrent-no-barrier",
+        "concurrent-barrier"
+      ],
+      "one_command_buffer": true,
+      "preload_actions": [
+        "selected source warms decoys",
+        "all sources warm targets"
+      ],
+      "producer_lines": 64,
+      "reader_lines": 8,
+      "reader_targets_disjoint": true,
+      "queries": 1280,
+      "records": 81920,
       "scan_lines": 64,
-      "scan_before": "all three timings",
-      "scan_excludes": "target set under existing XOR model and all eight target lines",
-      "uncompressed_sha256": "71333df160bb606210a2257fd4f85cfaaac1f7f67814ae1549edc9e068029fb2"
+      "scan_before": "every first and repeated increment",
+      "scan_excludes": "all target lines and current target set under existing XOR model",
+      "fresh_region_per_query_bytes": 131072,
+      "matched_relative_layout_per_repeat": true,
+      "uncompressed_sha256": "76d6bc738cab91eb9d78f355aaad72df31a19176eb13dd4e889a6c298305f6d4"
     },
     "smoke-original-0": {
       "mode": "pilot",
@@ -143,16 +168,16 @@
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "ef01f9a7b1e2b332168604ea7abe501876c781069f5c9596ebf0efbd40d1c054",
+    ".github/workflows/run.yml": "dab36c6f32585e0932af28acea3ee930bc30d5fa942baba4cb544ef264fb6f91",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
-    "bin/two-batch": "f9c71bf53f11ee37b4c97f2fc17818f1975b8f14e8da0783a54d90b9aa1fca0b",
-    "bin/two-batch.metallib": "2b9e0a7eb74f75c800bebbccb2ffca57d816ec0e30c9e8aaf12f0d5744b1a45f",
-    "inputs/two-batch-0.bin.gz": "4703814fd0936277237d37ceeb0f1e1ba3bd387a1c09c97c8018bd8e500003ca",
+    "bin/two-batch": "7fd2048662682b5acef7100f4ccd95b57e876454726675ac79252776cbac8288",
+    "bin/two-batch.metallib": "336192b1db01f52ef432b65bf27512a8253bb6768ab7c450c47120e7d67b6279",
+    "inputs/two-batch-0.bin.gz": "c5d948de6d14159ea315e12521b5be0b4d876d26bf9e0aed3331d8d974113cd2",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
