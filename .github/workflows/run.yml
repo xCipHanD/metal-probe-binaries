@@ -7,7 +7,7 @@ on:
       case:
         description: Frozen binary input case
         type: choice
-        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0]
+        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, ladder-pilot-0, ladder-full-0, ladder-full-1]
         default: smoke-original-0
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           case "$CASE" in
-            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0) ;;
+            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|ladder-pilot-0|ladder-full-0|ladder-full-1) ;;
             *) exit 2 ;;
           esac
           shasum -a 256 -c MANIFEST.sha256
@@ -34,9 +34,12 @@ jobs:
           { sw_vers; uname -m; file bin/prefetch-tail; } > artifacts/runner.txt
           cp manifest.json artifacts/bundle-manifest.json
           printf '%s\n' "$CASE" > artifacts/case.txt
-          chmod +x bin/prefetch-tail
+          HOST=bin/prefetch-tail
+          LIB=bin/prefetch-tail.metallib
+          case "$CASE" in ladder-*) HOST=bin/eviction-ladder; LIB=bin/eviction-ladder.metallib ;; esac
+          chmod +x "$HOST"
           gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
-          ./bin/prefetch-tail artifacts/input.bin bin/prefetch-tail.metallib > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
+          "$HOST" artifacts/input.bin "$LIB" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
           tail -n 1 artifacts/probe.stderr.txt >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
