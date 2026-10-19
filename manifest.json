@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "d78c9536ec645e737cb9d51bc37acaec5733f3398248711da89ac677ccb7e476",
+  "build_id": "b3838da8325030d73cdd008e2a4deb22ff447c531a4e403c896a9fb081766392",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -48,7 +48,7 @@
   "files": {
     "bin/prefetch-tail": "ff90537ee4231fddc0529540be96908e9de8635dca027ac3414c3aade46f01e5",
     "bin/prefetch-tail.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
-    ".github/workflows/run.yml": "69e14502466dd79171eb241baea35efc6307da057cb14e132797693f35ec42bb",
+    ".github/workflows/run.yml": "4bfbb9f0ba6a9599b40be7d48971e7ee28439d75f1042092c801fc95aa33ec4c",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/calibration-current.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
@@ -57,6 +57,7 @@
     "bin/calibration-split-zero.metallib": "7eec77a6d26293306e7645b7180ca271e9ead0310fd1965bc6fc005dd3a58cd8",
     "bin/calibration-uniform-pad.metallib": "12b064c7e660b545244cb195bf5c8763d56f7ebb757727e585ef041c8d2ed2ec",
     "bin/calibration-unrolled-pad.metallib": "9c167bd4fe2eac0df230d89c784257fc916db225d11655caa6b88647b3d09819",
+    "bin/calibration-static-pad.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
@@ -69,5 +70,11 @@
     "zero-end",
     "split-zero",
     "current-last"
+  ],
+  "padding_comparison_order": [
+    "split-first",
+    "static-pad",
+    "unrolled-pad",
+    "split-last"
   ]
 }
