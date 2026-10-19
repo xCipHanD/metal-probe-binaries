@@ -1,9 +1,15 @@
 {
   "schema": 1,
-  "build_id": "598d047c292ff9a1bb7ac771ae71eab34a1cbaf1f887dd3155bb9dd11c8677b3",
+  "build_id": "cfbab2b85fd88c50dbf708a323ad79757ce492674b2184f0c04a451c4f5213ef",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
+    "two-batch-0": {
+      "experiment": "two-batch",
+      "rounds": 64,
+      "queries": 512,
+      "uncompressed_sha256": "4bf712df68ff4b47baaf368ea3e657716405da7358e994e0f23184587a388369"
+    },
     "smoke-original-0": {
       "mode": "pilot",
       "kind": "original",
@@ -126,13 +132,16 @@
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "6e700db10b8beedc3f41934e3d67c5488178253646dd14c650c8ab6500e219d6",
+    ".github/workflows/run.yml": "ef01f9a7b1e2b332168604ea7abe501876c781069f5c9596ebf0efbd40d1c054",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
+    "bin/two-batch": "4641ecedbe67561a01e22cbb732d335424deed92a7b847b41756634ef7217709",
+    "bin/two-batch.metallib": "4dc23ed82198a82b844eaf741eaed538394071f2a48051cbc0cffe1a8f177c54",
+    "inputs/two-batch-0.bin.gz": "4d8d6b90c2c0b71a29fa2f70aa8391578aa057e8b1a0e2269cd82302f9a03486",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
