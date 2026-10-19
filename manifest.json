@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "67d56333569916c6890fadd95d621a23480f90f83f0e248ff2341a6ef43fbd75",
+  "build_id": "cb508b239a1aaa637376553e154a0f5759b32908bb39e2eb4c64641b62328466",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -9,6 +9,7 @@
       "rounds": 64,
       "queries": 512,
       "scan_lines": 64,
+      "scan_before": "all three timings",
       "scan_excludes": "target set under existing XOR model and all eight target lines",
       "uncompressed_sha256": "2099b61380f72ef29417cbb887888488c73b97d1a2b7c5486db7bdd1c01647a3"
     },
@@ -141,8 +142,8 @@
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
-    "bin/two-batch": "d56321aa6c9a18ea0bf13768758438e708c2cbf50759e2bf2dd0603d0ca7e90c",
-    "bin/two-batch.metallib": "4fcf40ed83f25e15a84dffe6cd38e71b6d427dc57dedf5d89e7b39a1ed24476e",
+    "bin/two-batch": "78850f86549e4c4a9f553ae2f212e0ee5a1ff7bd60c1cf8a231638b087f7d654",
+    "bin/two-batch.metallib": "b144ad367a4cbafd1c3aad5267846d3f35958fa91488c0b58b80ea775d2c9719",
     "inputs/two-batch-0.bin.gz": "693ce703f68c78b54c169702df044bc895043a4af084a3734b9f146ccd2003e1",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
