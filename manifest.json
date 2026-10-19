@@ -1,29 +1,24 @@
 {
   "schema": 1,
-  "build_id": "56a9962186b6d51710d42c6d6e763879851d58bba94798f4fcb77ac1554ae743",
+  "build_id": "0b18799e2b56feba1fdeb5e58c3ccd0a51f11557d37aa037a9f05c04a1c910d0",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
     "two-batch-0": {
-      "experiment": "two-batch",
-      "rounds": 128,
-      "repeats_per_shift": 16,
-      "shifts": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
+      "experiment": "two-batch-scheduling",
+      "rounds": 96,
+      "repeats_per_condition": 32,
+      "conditions": [
+        "same-command",
+        "other-queue-ALU",
+        "split-command"
       ],
-      "pairing": "B_i reads A_((i+shift)%8)",
-      "queries": 1024,
+      "pairing": "B_i reads A_i",
+      "queries": 768,
       "scan_lines": 64,
       "scan_before": "all three timings",
       "scan_excludes": "target set under existing XOR model and all eight target lines",
-      "uncompressed_sha256": "be19a4d7e7d100904963fadbc15776b2a8de5519e35c5d1519ec8208862b4e85"
+      "uncompressed_sha256": "65061e4996d56fabf32345ea8fb6f787ddb86fba11ed7e9c83b70ec603b20b95"
     },
     "smoke-original-0": {
       "mode": "pilot",
@@ -154,9 +149,9 @@
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
-    "bin/two-batch": "25ac29ac64144038e9a9a11a8a15c6043e37e32f6662e42b587172945408c2d3",
-    "bin/two-batch.metallib": "b144ad367a4cbafd1c3aad5267846d3f35958fa91488c0b58b80ea775d2c9719",
-    "inputs/two-batch-0.bin.gz": "644c183dcba79795d21285587be3c723956ca95067976217c34bb621d6440c8b",
+    "bin/two-batch": "d6ab4e970be8c85bd67f137470eb7bbeb2987aed42e4f03507ee623ba2b87b78",
+    "bin/two-batch.metallib": "2b9e0a7eb74f75c800bebbccb2ffca57d816ec0e30c9e8aaf12f0d5744b1a45f",
+    "inputs/two-batch-0.bin.gz": "f1410f05c63b517614aca1ede97fce5e0c8ad1509cc429b2106a771fa750634e",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
