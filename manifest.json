@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "a1639b86ba387f3b1b9f50b2c730a5b6e3c294aec13044b6ca6d7cbbae94cdd6",
+  "build_id": "0bbf5acc5866354b5848d2d4413522f2b91f460ee95707946f2f2cb509f368bb",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -35,7 +35,7 @@
         "selected source warms decoys",
         "all sources warm targets"
       ],
-      "producer_lines": 8,
+      "producer_lines": 64,
       "reader_lines": 1,
       "reader_targets_disjoint": true,
       "queries": 1280,
@@ -46,7 +46,7 @@
       "trace": "one line per reader in the same target page and a different recovered set; after local counters finish; no grid drain spin",
       "fresh_region_per_query_bytes": 131072,
       "matched_relative_layout_per_repeat": true,
-      "uncompressed_sha256": "eac8b1678605cb12d660f9d479bbf24736973f85b255d3fd216d04be9ce38dd5"
+      "uncompressed_sha256": "733233874a4e9c895240e126b7c75295b5cd9d46bfafbcbb51aca67a2a415b82"
     },
     "smoke-original-0": {
       "mode": "pilot",
@@ -178,8 +178,8 @@
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
     "bin/two-batch": "20a7f1be8aa1c5fea5164dc71b17011dd867c92def6759eb3c8419e0c8475be4",
-    "bin/two-batch.metallib": "e6c26c7bebfac15a599f3b4e1549146989ecc19057130c3738b6cc78f915a6d0",
-    "inputs/two-batch-0.bin.gz": "661dc192e59d2bb2aa5a35e0d938d507829460c7ce0f979a3137189b4bca1a75",
+    "bin/two-batch.metallib": "be1aceeea4eddc8d2bdd7005185fcdfdd93ec2c974ed80a6f7ee4627afa3077d",
+    "inputs/two-batch-0.bin.gz": "ef8cb8696da8db5e71ea7b0e77dfb6fd7634ffa2bc23a37206b8d5463e4accb7",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
