@@ -42,7 +42,22 @@ jobs:
           chmod +x "$HOST"
           gzip -dc "inputs/$CASE.bin.gz" > artifacts/input.bin
           "$HOST" artifacts/input.bin "$LIB" > artifacts/tail-raw.csv 2> artifacts/probe.stderr.txt
-          tail -n 1 artifacts/probe.stderr.txt >> "$GITHUB_STEP_SUMMARY"
+          tail -n 1 artifacts/probe.stderr.txt | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Back up results in job log
+        if: always()
+        run: |
+          set -euo pipefail
+          test -d artifacts || exit 0
+          cd artifacts
+          shopt -s nullglob
+          files=(*.csv *.json *.txt)
+          test "${#files[@]}" -gt 0 || exit 0
+          tar -czf "$RUNNER_TEMP/probe-results.tgz" "${files[@]}"
+          printf 'PROBE_RESULTS_SHA256 '
+          shasum -a 256 "$RUNNER_TEMP/probe-results.tgz"
+          printf 'PROBE_RESULTS_BASE64_BEGIN\n'
+          base64 -b 120 -i "$RUNNER_TEMP/probe-results.tgz"
+          printf '\nPROBE_RESULTS_BASE64_END\n'
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
