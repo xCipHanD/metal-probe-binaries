@@ -1,0 +1,4 @@
+bin/* -text
+inputs/* -text
+*.yml text eol=lf
+*.json text eol=lf
