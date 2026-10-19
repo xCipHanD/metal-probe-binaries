@@ -38,10 +38,10 @@ jobs:
           if [ "$CASE" = calibration-compare ] || [ "$CASE" = calibration-padding ]; then
             gzip -dc inputs/pilot-original-0.bin.gz > artifacts/input.bin
             LABELS="current-first split zero-end split-zero current-last"
-            if [ "$CASE" = calibration-padding ]; then LABELS="split-first static-pad unrolled-pad split-last"; fi
+            if [ "$CASE" = calibration-padding ]; then LABELS="static-first armed-dynamic armed-static static-last"; fi
             for LABEL in $LABELS; do
               VARIANT="$LABEL"
-              case "$LABEL" in current-*) VARIANT=current ;; split-first|split-last) VARIANT=split ;; esac
+              case "$LABEL" in current-*) VARIANT=current ;; split-first|split-last) VARIANT=split ;; static-first|static-last) VARIANT=static-pad ;; esac
               DEST="$GITHUB_WORKSPACE/artifacts/$LABEL/artifacts"
               mkdir -p "$DEST"
               cp manifest.json "$DEST/bundle-manifest.json"

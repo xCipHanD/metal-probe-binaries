@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "68c7b3c8dbab4455e8c4296b81e709e084a774e3377e9451e3f16ba42994f278",
+  "build_id": "2055fc6cab7aa033e6d5d10adc88338bfd3ec6452847f7b9f70f7c899c5fa3fc",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -48,7 +48,7 @@
   "files": {
     "bin/prefetch-tail": "ff90537ee4231fddc0529540be96908e9de8635dca027ac3414c3aade46f01e5",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "4bfbb9f0ba6a9599b40be7d48971e7ee28439d75f1042092c801fc95aa33ec4c",
+    ".github/workflows/run.yml": "65cabd7315247c4701058ab7d611c332538d08f7a1f2ae160395a3db1f452f5f",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/calibration-current.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
@@ -58,6 +58,8 @@
     "bin/calibration-uniform-pad.metallib": "12b064c7e660b545244cb195bf5c8763d56f7ebb757727e585ef041c8d2ed2ec",
     "bin/calibration-unrolled-pad.metallib": "9c167bd4fe2eac0df230d89c784257fc916db225d11655caa6b88647b3d09819",
     "bin/calibration-static-pad.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
+    "bin/calibration-armed-dynamic.metallib": "844a51b20eb3b5ef3cb324579e712ad8de3f8d0e9918310860e802a7220c06fc",
+    "bin/calibration-armed-static.metallib": "af490b2b0f312b1493e58019fd6899a25a026c6e289ff9da38cc5dca3027a359",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
@@ -72,9 +74,9 @@
     "current-last"
   ],
   "padding_comparison_order": [
-    "split-first",
-    "static-pad",
-    "unrolled-pad",
-    "split-last"
+    "static-first",
+    "armed-dynamic",
+    "armed-static",
+    "static-last"
   ]
 }
