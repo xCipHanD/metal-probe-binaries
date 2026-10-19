@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "f255039c6c57f7c13c9269be5332459f0047bce7e20d680cc08d721452f309e0",
+  "build_id": "d78c9536ec645e737cb9d51bc37acaec5733f3398248711da89ac677ccb7e476",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -48,13 +48,15 @@
   "files": {
     "bin/prefetch-tail": "ff90537ee4231fddc0529540be96908e9de8635dca027ac3414c3aade46f01e5",
     "bin/prefetch-tail.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
-    ".github/workflows/run.yml": "1d9eccc5370683fcf2d00fa47830fb3a72085327575d7f5ce6395b4448a4e98c",
+    ".github/workflows/run.yml": "69e14502466dd79171eb241baea35efc6307da057cb14e132797693f35ec42bb",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/calibration-current.metallib": "107d7507235719ff15d36cb4ed6edb750a492527c42c204e9f95e68cb6b94ece",
     "bin/calibration-zero-end.metallib": "dc6cf3dd9de90ffbcd7c84c5bbf8e04e97d3924cfcfb584200588c8925f62930",
     "bin/calibration-split.metallib": "63af28f42d11502665c98b1da740360afc672ea8f32fe0e6291519b0f64a27e3",
     "bin/calibration-split-zero.metallib": "7eec77a6d26293306e7645b7180ca271e9ead0310fd1965bc6fc005dd3a58cd8",
+    "bin/calibration-uniform-pad.metallib": "12b064c7e660b545244cb195bf5c8763d56f7ebb757727e585ef041c8d2ed2ec",
+    "bin/calibration-unrolled-pad.metallib": "9c167bd4fe2eac0df230d89c784257fc916db225d11655caa6b88647b3d09819",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
