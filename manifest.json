@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "7ee6ea5875ac1f82585c2dae04de8772d1d0ffcc3734f8dba0bbd6627db5dc07",
+  "build_id": "2591518e4384419a04496ffa321f43fdfc653d23f492d3a4ab4bb2c4004c7cf5",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -147,6 +147,38 @@
       "original_counter_and_increment": true,
       "uncompressed_sha256": "72c1267096d6773658fee267a5c20919eb590c4c03df16c62f19cc721ec3790e"
     },
+    "two-batch-colocation-rewrite-0": {
+      "experiment": "colocation-rewrite-with-fixed-work-control",
+      "protocol": "FANCOLO2",
+      "rounds": 288,
+      "repeats": 8,
+      "threads": [
+        1024
+      ],
+      "sources": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "conditions": [
+        "off",
+        "ALU256",
+        "ALU65536",
+        "TG-atomic262144x32"
+      ],
+      "warm_queries": 256,
+      "cold_queries": 32,
+      "main_grid": "A8+B8, no inserted groups; original counter and increment brackets; one 2048-round dependent ALU bracket before and after the reads",
+      "flood": "independent process, same pipeline in all active modes; exactly one command in flight, wait and checksum before submitting the next; CPU timestamps only",
+      "diagnostics": "raw clock brackets and checksums, protected same-page diagnostic lines written after counters finish; no cache-tier or calibrated-time claim from first/repeat ratio",
+      "original_counter_and_increment": true,
+      "uncompressed_sha256": "c1dd4952b7ab3ff22a51cafa4725eba2ebc4043f4336f51342abcbe6ec93a6ff"
+    },
     "smoke-original-0": {
       "mode": "pilot",
       "kind": "original",
@@ -269,19 +301,20 @@
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "5f99fa0ab985729a335c52eade1650ec6cd5c1479e46fb83fa346d0a9bc3defe",
+    ".github/workflows/run.yml": "02cd0c53663132ae3490a63c0231717bba2271054090e9bca8ba3be574d06b86",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
-    "bin/two-batch": "59d6984dbcc435f10f48e7cdcd7d6d3842daa1e01df070bab5f7551e66b2df70",
-    "bin/two-batch.metallib": "69f8291d4a706e25501114583b4d6c4bf4007024bf001d9d54ad0ff9049ff704",
+    "bin/two-batch": "10302c4387fca26cd347aa93091f37e9b6fba04ae8d18187209fdd4aaa8df784",
+    "bin/two-batch.metallib": "4a6ffc0a64d8acb734180a1a84ed92c12b0614776914f53ee108011dc061a917",
     "inputs/two-batch-0.bin.gz": "ef8cb8696da8db5e71ea7b0e77dfb6fd7634ffa2bc23a37206b8d5463e4accb7",
     "inputs/two-batch-gap-0.bin.gz": "10c6da750f8df64fd38ebac979758fea06f911d38faace834ef87f20e3349a27",
     "inputs/two-batch-process-0.bin.gz": "0a15bdcf58cbea9c5d6a90632e2509258454e86b60db9365305bb0fac98c6eec",
     "inputs/two-batch-colocation-0.bin.gz": "5520f2826b2ca3ee4823107291a8fb60055174d8ec72db93198eca6c1c448004",
+    "inputs/two-batch-colocation-rewrite-0.bin.gz": "c0cdc8c186b01844ede532e546d2e24ea1384b1be1683bee06f98103cb60dc6f",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
