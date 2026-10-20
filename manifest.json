@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "2fd9b24ffda96c817f17c13d0b365f31be3ba64fed2dde6f046aa0f81af9fe1d",
+  "build_id": "7ee6ea5875ac1f82585c2dae04de8772d1d0ffcc3734f8dba0bbd6627db5dc07",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -114,6 +114,38 @@
       "progress": "CPU-only shared control, fresh GPU progress before each active query and complete drain before each control; record completions over whole main CPU submission window",
       "original_counter_and_increment": true,
       "uncompressed_sha256": "f123056cb68d172666265701da7ee1695940b2b9388f32a18725285683db0cab"
+    },
+    "two-batch-colocation-0": {
+      "experiment": "long-local-resource-contention",
+      "protocol": "FANCOLO1",
+      "rounds": 288,
+      "repeats": 8,
+      "threads": [
+        1024
+      ],
+      "sources": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "conditions": [
+        "off",
+        "ALU256",
+        "ALU65536",
+        "TG-atomic262144x32"
+      ],
+      "warm_queries": 256,
+      "cold_queries": 32,
+      "main_grid": "unchanged A8+B8 in one dispatch; zero inserted groups",
+      "flood": "independent process, one 1024-thread group per command, 32 commands queued; drain when changing workload; every completion checksum checked",
+      "timestamps": "GPUStartTime/GPUEndTime after command completion, in shared system mach time; interval overlap does not prove simultaneous instructions or same-core residency",
+      "original_counter_and_increment": true,
+      "uncompressed_sha256": "72c1267096d6773658fee267a5c20919eb590c4c03df16c62f19cc721ec3790e"
     },
     "smoke-original-0": {
       "mode": "pilot",
@@ -237,18 +269,19 @@
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "4dcec64a837f635039283137541e90bf8a57d8ceab6a4fc2e63d1f58afb86ca9",
+    ".github/workflows/run.yml": "5f99fa0ab985729a335c52eade1650ec6cd5c1479e46fb83fa346d0a9bc3defe",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
     "bin/eviction-ladder.metallib": "25fef3f3b8bb2112ea32bb5f0b87872a9cf02054135a91cae64f387986c5da28",
     "bin/cache-controls": "89454b8f0ccf7a87f0d6135212a620fbb7fd1c08c03c15eb6d3796093ed30150",
     "bin/cache-controls.metallib": "dcf930877ff5404b320599b2c4846777e8aea7be95ac5fcd6d36ba95a873c8fa",
-    "bin/two-batch": "f2ea0c959a4943d94a9e082fc3d988efc7260e63d5f00edaeebd1e8184d590cd",
-    "bin/two-batch.metallib": "23d0fe631a0ee13515a4d78f82b4caec2587adb3aa65a69a193abaed042b7f1d",
+    "bin/two-batch": "59d6984dbcc435f10f48e7cdcd7d6d3842daa1e01df070bab5f7551e66b2df70",
+    "bin/two-batch.metallib": "69f8291d4a706e25501114583b4d6c4bf4007024bf001d9d54ad0ff9049ff704",
     "inputs/two-batch-0.bin.gz": "ef8cb8696da8db5e71ea7b0e77dfb6fd7634ffa2bc23a37206b8d5463e4accb7",
     "inputs/two-batch-gap-0.bin.gz": "10c6da750f8df64fd38ebac979758fea06f911d38faace834ef87f20e3349a27",
     "inputs/two-batch-process-0.bin.gz": "0a15bdcf58cbea9c5d6a90632e2509258454e86b60db9365305bb0fac98c6eec",
+    "inputs/two-batch-colocation-0.bin.gz": "5520f2826b2ca3ee4823107291a8fb60055174d8ec72db93198eca6c1c448004",
     "inputs/smoke-original-0.bin.gz": "cbdc59dcddf75cbbd8e0d5c5c8e7d7eff59367ab686323755ccc9508adf8e1b3",
     "inputs/pilot-original-0.bin.gz": "36d58fce595f979c624553e5bf494fb3e1f2f5bf502e499ba999ee288584a059",
     "inputs/full-original-0.bin.gz": "2f0093e1c47f9b17b37a94b8ce7cf66899417d0b120201252d440cfdd4e29c89",
