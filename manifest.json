@@ -1,9 +1,31 @@
 {
   "schema": 1,
-  "build_id": "e53cba0e9450190788182c4b5f34d75b11a60e8321227b4bdecf2e3aff1df2d8",
+  "build_id": "53dce91244dfc4006ee8944a3a4c7b14d7ae189117160adae3806142821a1ce1",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
+    "translation-position-0": {
+      "protocol": "TLBPOS01",
+      "queries": 384,
+      "repeats": 8,
+      "groups": 1,
+      "threads_per_group": 1024,
+      "pressure_nodes": [
+        0,
+        16,
+        64,
+        256,
+        1024,
+        4096
+      ],
+      "layout": "same number of 128B-spaced nodes in recovered group4: packed16/page versus spread1/page; randomized dependent pointer chains; one warm traversal before target prefill, two pressure traversals after",
+      "cache_state": "target group0: retain versus256 congruent recovered-group0 lines across16 other16KiB regions",
+      "guard": "single load from far same-page line versus equal-offset line512KiB away; both in recovered group4 and warmed before target; target not reloaded after pressure",
+      "page_unit": "16KiB aligned virtual regions; GPU translation granule unknown",
+      "original_counter_and_increment": true,
+      "limitations": "Timing cannot alone establish VIVT or physical L1; require successful cache-state separation and an independent translation-pressure signal,then compare guard rescue of hot and evicted targets.",
+      "uncompressed_sha256": "9ff9c05a7e8ab9a68687506d12b5e8f75febe4d524315df36cf9eb9a2dc39b42"
+    },
     "two-batch-0": {
       "experiment": "fanout-original-timer-fixed",
       "protocol": "FANFIX02",
@@ -361,7 +383,7 @@
   "files": {
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
-    ".github/workflows/run.yml": "e878658e8e6603e2bf142246a71572676420f2bd2272bda881fa1ee74754cd8c",
+    ".github/workflows/run.yml": "97ced3c69f764bb2bf4f3dc9b604168d47046191ad64e2056a8adef2770f8398",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
     "bin/eviction-ladder": "6663db2b245ccd32bb5840e94a7111b9b869e07e4a7d8981e90499c137d37b5e",
@@ -374,6 +396,9 @@
     "bin/pair-handshake.metallib": "605fd3669687929403f5b2e1f6766ea5d0162877ca837b2360de3008afe0c620",
     "bin/matrix-handshake": "8c2bff469e9f7b32dc8d062af7160c3c50fd948340b0cfcc5d5e97c6d1a7fc1b",
     "bin/matrix-handshake.metallib": "707f1ed4b9fb52b522108c663fa6f8df7239979cc03bb649598b6eec2cdb6780",
+    "bin/tlb-position": "0907b2c462be69b6811ba970eceebb57f588a55de55e8ff29c4880fd683c5c0c",
+    "bin/tlb-position.metallib": "2b52ef42ef167c8e59f7b02e4c0d86eba7bd50b0a9a7f357170f3fde752f7652",
+    "inputs/translation-position-0.bin.gz": "231db2364bf3a700b44d907b10a7c1bded1fe2c60d6d575f66ad62ad2405016a",
     "inputs/two-batch-0.bin.gz": "ef8cb8696da8db5e71ea7b0e77dfb6fd7634ffa2bc23a37206b8d5463e4accb7",
     "inputs/pair-handshake-0.bin.gz": "89ea253e74b1a212d78111d8b8ca3c6de8aea79406c083e15db65c737057aca1",
     "inputs/pair-handshake-size-0.bin.gz": "63c943d4d5a7d7cf2373f02ea70616310b72dccc1d2350215eb0cd5845f0c0c7",
