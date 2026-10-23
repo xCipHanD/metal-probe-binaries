@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "d56993c95122086065d04935ec28a90f70caf6504fb24971d5d162274705c276",
+  "build_id": "3edbf6d0f8bd1db9887f0a852d48b7c34583e3f4117e719a56c995e4c74525e4",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -88,6 +88,7 @@
       "groups": 16,
       "threads_per_group": 1024,
       "one_dispatch": true,
+      "handshake_poll_limit": 4194304,
       "phases": "16 within-kernel cyclic matchings in precomputed shuffled order; all groups refresh one fresh own line, prefill handshake, one peer first/hot read, completion handshake; no group exits between phases",
       "layout": "one shuffled 16KiB page per owner; protected recovered sets 0/1, non-target scans before every increment; disjoint current-phase write addresses; five protected output lines per reader",
       "validity": "timeout raises shared abort; retain diagnostics and exclude entire failed matrices; no inference of physical residency from handshake alone",
@@ -359,7 +360,7 @@
     "bin/pair-handshake": "173457d6efbcfffa695cfb60caabefef94b9d502716b7410a868a38bcbcf0c8d",
     "bin/pair-handshake.metallib": "605fd3669687929403f5b2e1f6766ea5d0162877ca837b2360de3008afe0c620",
     "bin/matrix-handshake": "f1782a3655f4c28a4a8c7d695906eac95f60175f96653aaefd015225e6902339",
-    "bin/matrix-handshake.metallib": "df91e47a4127cb4dc8fe81ab178894de0123609dda5865e0c854ddfee8b055d5",
+    "bin/matrix-handshake.metallib": "6572d007830a6bbf7ee9f9d55d6e55aea604bd08b299e48d74ade42e772ec31b",
     "inputs/two-batch-0.bin.gz": "ef8cb8696da8db5e71ea7b0e77dfb6fd7634ffa2bc23a37206b8d5463e4accb7",
     "inputs/pair-handshake-0.bin.gz": "89ea253e74b1a212d78111d8b8ca3c6de8aea79406c083e15db65c737057aca1",
     "inputs/pair-handshake-size-0.bin.gz": "63c943d4d5a7d7cf2373f02ea70616310b72dccc1d2350215eb0cd5845f0c0c7",
