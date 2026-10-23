@@ -7,7 +7,7 @@ on:
       case:
         description: Frozen binary input case
         type: choice
-        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, ladder-pilot-0, ladder-full-0, ladder-full-1, tlb-pilot-0, tlb-full-0, tlb-full-1, cpu-pilot-0, cpu-full-0, cpu-full-1, two-batch-0, two-batch-gap-0, two-batch-process-0, two-batch-colocation-0, two-batch-colocation-rewrite-0, pair-handshake-0, pair-handshake-size-0, matrix-handshake-16-0]
+        options: [smoke-original-0, pilot-original-0, full-original-0, full-random-1, diagnostic-original-0, ladder-pilot-0, ladder-full-0, ladder-full-1, tlb-pilot-0, tlb-full-0, tlb-full-1, cpu-pilot-0, cpu-full-0, cpu-full-1, two-batch-0, two-batch-gap-0, two-batch-process-0, two-batch-colocation-0, two-batch-colocation-rewrite-0, pair-handshake-0, pair-handshake-size-0, matrix-handshake-16-0, matrix-handshake-8-0]
         default: smoke-original-0
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           case "$CASE" in
-            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|ladder-pilot-0|ladder-full-0|ladder-full-1|tlb-pilot-0|tlb-full-0|tlb-full-1|cpu-pilot-0|cpu-full-0|cpu-full-1|two-batch-0|two-batch-gap-0|two-batch-process-0|two-batch-colocation-0|two-batch-colocation-rewrite-0|pair-handshake-0|pair-handshake-size-0|matrix-handshake-16-0) ;;
+            smoke-original-0|pilot-original-0|full-original-0|full-random-1|diagnostic-original-0|ladder-pilot-0|ladder-full-0|ladder-full-1|tlb-pilot-0|tlb-full-0|tlb-full-1|cpu-pilot-0|cpu-full-0|cpu-full-1|two-batch-0|two-batch-gap-0|two-batch-process-0|two-batch-colocation-0|two-batch-colocation-rewrite-0|pair-handshake-0|pair-handshake-size-0|matrix-handshake-16-0|matrix-handshake-8-0) ;;
             *) exit 2 ;;
           esac
           shasum -a 256 -c MANIFEST.sha256
