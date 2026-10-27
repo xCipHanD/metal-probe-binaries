@@ -1,0 +1,47 @@
+name: Inspect macOS desktop
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  desktop:
+    runs-on: macos-15
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Inspect session and capture a visible app
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p artifacts
+          {
+            sw_vers
+            uname -m
+            printf 'runner_user='; id -un
+            printf 'console_user='; stat -f '%Su' /dev/console
+            printf 'launch_manager='; launchctl managername
+            launchctl print "gui/$(id -u)" >/dev/null 2>&1
+            printf 'gui_domain_status=%s\n' "$?"
+            ps -axo pid=,uid=,comm= | awk '/WindowServer|Finder.app|Dock.app|loginwindow.app/ {print}'
+          } > artifacts/session.txt 2>&1
+          system_profiler SPDisplaysDataType -json > artifacts/displays.json 2> artifacts/displays.stderr.txt
+          /usr/sbin/screencapture -x artifacts/desktop-before.png 2> artifacts/capture-before.stderr.txt
+          printf 'capture_before_status=%s\n' "$?" >> artifacts/session.txt
+          printf 'GitHub Actions GUI probe\nA real app window opened by this job.\nRun: %s\n' "$GITHUB_RUN_ID" > artifacts/gui-probe.txt
+          open -a TextEdit "$PWD/artifacts/gui-probe.txt" > artifacts/open.stdout.txt 2> artifacts/open.stderr.txt
+          printf 'open_app_status=%s\n' "$?" >> artifacts/session.txt
+          sleep 5
+          ps -axo pid=,uid=,comm= | awk '/TextEdit.app/ {print}' >> artifacts/session.txt
+          /usr/sbin/screencapture -x artifacts/desktop-after.png 2> artifacts/capture-after.stderr.txt
+          printf 'capture_after_status=%s\n' "$?" >> artifacts/session.txt
+          cat artifacts/session.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          cat artifacts/capture-before.stderr.txt artifacts/capture-after.stderr.txt >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: desktop-probe
+          path: artifacts/
+          retention-days: 14
