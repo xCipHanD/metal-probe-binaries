@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "6d769ffa0125b91681eb700447e7e1e723fa7b07ac19f8dbfad888a470b8ef46",
+  "build_id": "9911b236e69b56df00d6663a3801a03536da84183e767ee37cbc0fe692fd2534",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -400,10 +400,11 @@
     "bin/matrix-handshake.metallib": "707f1ed4b9fb52b522108c663fa6f8df7239979cc03bb649598b6eec2cdb6780",
     "bin/tlb-position": "0907b2c462be69b6811ba970eceebb57f588a55de55e8ff29c4880fd683c5c0c",
     "bin/tlb-position.metallib": "2b52ef42ef167c8e59f7b02e4c0d86eba7bd50b0a9a7f357170f3fde752f7652",
-    "bin/tbdr-probe": "5cacbe3a23f21180227e7a827a5a70d25f360e0838ba694250c73cfa9cf55d02",
-    "bin/tbdr-tile.metallib": "5bc18a8f652b2e89f61eb19970a6f78c3d7e1051a11f777bddc68d3e46288c5d",
-    "bin/tbdr-basic.metallib": "606e8ca340746a34342e8dfdea5b02fd99f002bd6cdfe20cccdd2fe7d3787623",
-    "bin/tbdr-implicit.metallib": "4f5fd0a9142a652250621069aae99eb6324cbcbe38b82f05c3630028236df276",
+    "bin/tbdr-probe": "cd98f8c165bfaa455a28f75149c2ccea0553947ea410e6e3d9e085b70dd92b7a",
+    "bin/tbdr-tile.metallib": "12637c14c950a44b6c3c7a15a368dfa1dfd5f25168b420fbe30c38bad3eba500",
+    "bin/tbdr-basic.metallib": "3b1d5f4beecb417b58a7ab019f7b284d26bd6ae95dcadd5e9ca6c3bfc64e7ba6",
+    "bin/tbdr-implicit.metallib": "b0cbe564ed85fb5b2fe9958e6d387925047786bac3bd747f0503c13a86b8cd36",
+    "bin/tbdr-imageblock.metallib": "47b3c92cef944dc82cbc6dab780efebe201155ae96599d3b8bb51afffa0fcd36",
     "inputs/translation-position-0.bin.gz": "231db2364bf3a700b44d907b10a7c1bded1fe2c60d6d575f66ad62ad2405016a",
     "inputs/two-batch-0.bin.gz": "ef8cb8696da8db5e71ea7b0e77dfb6fd7634ffa2bc23a37206b8d5463e4accb7",
     "inputs/pair-handshake-0.bin.gz": "89ea253e74b1a212d78111d8b8ca3c6de8aea79406c083e15db65c737057aca1",
