@@ -1,6 +1,11 @@
 name: Check and time TBDR features
 on:
   workflow_dispatch:
+    inputs:
+      validation:
+        description: Enable official Metal API Validation
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -12,12 +17,15 @@ jobs:
         with:
           persist-credentials: false
       - name: Verify binaries and probe TBDR
+        env:
+          MTL_DEBUG_LAYER: ${{ inputs.validation && '1' || '0' }}
         run: |
           set -euo pipefail
           shasum -a 256 -c MANIFEST.sha256
           test "$(uname -m)" = arm64
           mkdir -p artifacts
           { sw_vers; uname -m; } > artifacts/runner.txt
+          printf 'MTL_DEBUG_LAYER=%s\n' "$MTL_DEBUG_LAYER" >> artifacts/runner.txt
           cp manifest.json artifacts/bundle-manifest.json
           chmod +x bin/tbdr-probe
           bin/tbdr-probe bin/tbdr-tile.metallib > artifacts/tbdr-support.json 2> artifacts/probe.stderr.txt
