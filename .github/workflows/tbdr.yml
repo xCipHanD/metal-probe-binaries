@@ -6,6 +6,10 @@ on:
         description: Enable official Metal API Validation
         type: boolean
         default: false
+      audit:
+        description: Minimal original timer versus added waits
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -28,6 +32,24 @@ jobs:
           printf 'MTL_DEBUG_LAYER=%s\n' "$MTL_DEBUG_LAYER" >> artifacts/runner.txt
           cp manifest.json artifacts/bundle-manifest.json
           chmod +x bin/tbdr-probe
+          if [ '${{ inputs.audit }}' = true ]; then
+            failed=0
+            for tile in 0 1; do
+              for kind in 0 2 1; do
+                for threads in 64 1024; do
+                  name="audit-${tile}-${kind}-${threads}"
+                  if bin/tbdr-probe bin/tbdr-audit.metallib "$tile" "$kind" "$threads" > "artifacts/$name.csv" 2> "artifacts/$name.stderr.txt"; then
+                    status=0
+                  else
+                    status=$?
+                    failed=1
+                  fi
+                  printf '%s,%s\n' "$name" "$status" >> artifacts/audit-exits.csv
+                done
+              done
+            done
+            exit "$failed"
+          fi
           bin/tbdr-probe bin/tbdr-tile.metallib > artifacts/tbdr-support.json 2> artifacts/probe.stderr.txt
           cat artifacts/tbdr-support.json >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
