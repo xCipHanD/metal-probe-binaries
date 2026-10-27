@@ -35,16 +35,20 @@ jobs:
           if [ '${{ inputs.audit }}' = true ]; then
             failed=0
             for tile in 0 1; do
-              for kind in 0 2 1; do
+              for kind in 2 0 1; do
                 for threads in 64 1024; do
-                  name="audit-${tile}-${kind}-${threads}"
-                  if bin/tbdr-probe bin/tbdr-audit.metallib "$tile" "$kind" "$threads" > "artifacts/$name.csv" 2> "artifacts/$name.stderr.txt"; then
+                  counts='10000000'
+                  if [ "$kind" = 2 ]; then counts='1 1000 100000 1000000 10000000'; fi
+                  for iterations in $counts; do
+                  name="audit-${tile}-${kind}-${threads}-${iterations}"
+                  if bin/tbdr-probe bin/tbdr-audit.metallib "$tile" "$kind" "$threads" "$iterations" > "artifacts/$name.csv" 2> "artifacts/$name.stderr.txt"; then
                     status=0
                   else
                     status=$?
                     failed=1
                   fi
                   printf '%s,%s\n' "$name" "$status" >> artifacts/audit-exits.csv
+                  done
                 done
               done
             done
