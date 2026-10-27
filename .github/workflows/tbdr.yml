@@ -10,6 +10,10 @@ on:
         description: Minimal original timer versus added waits
         type: boolean
         default: false
+      responsive:
+        description: Tile timer with short stop-check batches
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -54,7 +58,11 @@ jobs:
             done
             exit "$failed"
           fi
-          bin/tbdr-probe bin/tbdr-tile.metallib > artifacts/tbdr-support.json 2> artifacts/probe.stderr.txt
+          if [ '${{ inputs.responsive }}' = true ]; then
+            bin/tbdr-probe bin/tbdr-responsive-tile.metallib responsive > artifacts/tbdr-support.json 2> artifacts/probe.stderr.txt
+          else
+            bin/tbdr-probe bin/tbdr-tile.metallib > artifacts/tbdr-support.json 2> artifacts/probe.stderr.txt
+          fi
           cat artifacts/tbdr-support.json >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()

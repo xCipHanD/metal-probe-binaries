@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "27d44c6ddc1f47bdf49e6e56d2fb398e424c81d3b012a432247ef76e99a5e4d6",
+  "build_id": "11356a29592f8768fed2ad1dcdb2d045cbae06c405fa9cc3a25dd74c4a9dcda2",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -384,7 +384,7 @@
     "bin/prefetch-tail": "32b98dd77e53e03fe0fefe709f76942028edac4d2227f4e28dc033176d367320",
     "bin/prefetch-tail.metallib": "a4522361444ce7e161332b45c95b7c994f7563c9e07d1ff129b6e21343823c75",
     ".github/workflows/desktop.yml": "d0c652919b4009d30405b5b6955e8a4ca491ece5c4c6a6b17b678d83192e21d8",
-    ".github/workflows/tbdr.yml": "78b746ffc931fbc0a49f1e2d2a3076b1cd64fe384dc9db9c83e4c302adc6932f",
+    ".github/workflows/tbdr.yml": "4870eaa9d141cc5e492ec90c60f068fedc0fa6b12e4f6d234d706a23bb5a9bbe",
     ".github/workflows/run.yml": "97ced3c69f764bb2bf4f3dc9b604168d47046191ad64e2056a8adef2770f8398",
     ".gitattributes": "da6576cff71652c9caa97d4346cae3efa3d3ef67c87197bc5f34fa683c6645a9",
     "README.md": "d0fb1ad9af18395e139b4beeafe123f3b3ea3fbef808d97b3d827203a565ecd0",
@@ -400,7 +400,10 @@
     "bin/matrix-handshake.metallib": "707f1ed4b9fb52b522108c663fa6f8df7239979cc03bb649598b6eec2cdb6780",
     "bin/tlb-position": "0907b2c462be69b6811ba970eceebb57f588a55de55e8ff29c4880fd683c5c0c",
     "bin/tlb-position.metallib": "2b52ef42ef167c8e59f7b02e4c0d86eba7bd50b0a9a7f357170f3fde752f7652",
-    "bin/tbdr-probe": "2c875fb2b52127bb52ff48f774e67759ce465ee9404120fd9368c521ac76a547",
+    "bin/tbdr-responsive-tile.metallib": "839113a1be52ada1e94fc885d94018bb58d312ab8601c973ef1018755a39a44a",
+    "bin/tbdr-responsive-implicit.metallib": "94af05c878e46a010a81125bd4a7c90ed009bef85fc6ce77949866a98a448c5a",
+    "bin/tbdr-responsive-basic.metallib": "0e5b321af56c377146bfbe27ec63b1bad9c430689230d2ea26378968b04e9494",
+    "bin/tbdr-probe": "953d77af38b17c81a8a1df957230bd656c1c96b68b451c3a2a81edcf5adf0426",
     "bin/tbdr-tile.metallib": "4d990086eb6390c9026bf819f0a1ed3d776bc256d2a4872f744e8849347a927f",
     "bin/tbdr-basic.metallib": "741290a951ab33da0f5357a3c5ba522dc130ed95d1ced669b557b8c0fe009572",
     "bin/tbdr-implicit.metallib": "a75148f1c4b6d4ebef4a3180ab0440b149fbd8075e87e3bc628b5b024c8c8eb5",
