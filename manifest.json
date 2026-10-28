@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "107af508ee5337b8afda50796a34a5e3824b85b94308c737bff0e6861d5c60dd",
+  "build_id": "b34b85c90f8d5323993ec98e2c1e93022e90b4398d4c5fc0212968655db25dea",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -412,7 +412,7 @@
     "bin/tbdr-scene": "d18e0f4fd5f8d33e5cef23be7679c04bfe1fdfc72107e8f276d648332312e0c3",
     "bin/tbdr-scene.metallib": "d51bb3d75a5b7f3dc182886782ad5fa92dcf6d7f0b60661e92730c21312bcc95",
     ".github/workflows/scene.yml": "a074d48ae9cc0339b2a5febcb80b52f099dc0a715a891e7f9ab359008e206704",
-    "bin/scene-tick": "208d4a2b310d2d7241bab11039ac6774305862f699a4fa15407bb8a8e9a02e5c",
+    "bin/scene-tick": "88e47992526d61a6df1b79cad47a3e5f9f17a772be599a82bb4ea20190fdd92c",
     "bin/scene-tick.metallib": "82c1120106d3c7d8480b143f407588db6d957e419ad5d04147f7c79f7c89fa25",
     ".github/workflows/scene-tick.yml": "29563f21b7a425b48e44e2d20ba3ecfb9b1d03562619333227c3339719996601",
     "inputs/translation-position-0.bin.gz": "231db2364bf3a700b44d907b10a7c1bded1fe2c60d6d575f66ad62ad2405016a",
