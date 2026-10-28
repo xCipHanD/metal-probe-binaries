@@ -5,7 +5,7 @@ on:
       mode:
         description: Sampling scope
         type: choice
-        options: [pilot, full]
+        options: [pilot, full, phase]
         default: pilot
       rounds:
         description: Repetitions
