@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "bd0a0a295d3e722a11532b6d9c732eeab3a31f9187ad0e582435af0be69c7e13",
+  "build_id": "9feefedf29e6ecd7a23f18b415c53a5892d006ee7df34dc997aae8a8ee07eef3",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -448,7 +448,7 @@
     "bin/window-present": "2c7a122bea900ea8c9fe7bfbf63a7e93bc722563b1cfc7b6d5ea1c74e5a8f281",
     "bin/window-present.metallib": "dc7e41e359098a45a6289da97a3d935b8ba48cc602fda190065da1be3c5cfaa2",
     ".github/workflows/window-present.yml": "a1fcba43917e7ef14f0e012bf1aeaadc1f30b53265c02541c8e398ee5c8db9b3",
-    "bin/window-screen": "0c98f0a6ad5170de7b211244217d0fcc0d918ab733a5889dead3ee73dccbf07d",
+    "bin/window-screen": "10b1f62475b5e6c7e42efef5b4efaa26d91ee568391e62b5f6e962a8e692af58",
     "bin/window-screen.metallib": "c743f011e727a2defffdf56e906d14116960c2467e6cccb6885d794dffbf9137",
     ".github/workflows/window-screen.yml": "f8e64d75b23543dc23c99b3c439711e516761981b17dd791b1bd9e39e55496f0"
   }
