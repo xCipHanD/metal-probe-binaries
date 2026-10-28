@@ -1,0 +1,37 @@
+name: Compare TBDR scenes with software ticks
+on:
+  workflow_dispatch:
+    inputs:
+      repeats:
+        description: Randomized rounds per case
+        default: '12'
+        type: choice
+        options: ['2', '12', '24']
+permissions:
+  contents: read
+jobs:
+  scene:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Measure and verify rendered outputs
+        env:
+          MTL_DEBUG_LAYER: '1'
+        run: |
+          set -euo pipefail
+          shasum -a 256 -c MANIFEST.sha256
+          test "$(uname -m)" = arm64
+          mkdir -p artifacts
+          { sw_vers; uname -m; printf 'MTL_DEBUG_LAYER=%s\n' "$MTL_DEBUG_LAYER"; } > artifacts/runner.txt
+          cp manifest.json artifacts/bundle-manifest.json
+          chmod +x bin/scene-tick
+          bin/scene-tick bin/scene-tick.metallib '${{ inputs.repeats }}' > artifacts/scene.stdout.txt 2> artifacts/scene.stderr.txt
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: scene-tick
+          path: artifacts/
+          retention-days: 14
