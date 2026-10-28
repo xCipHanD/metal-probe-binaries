@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "9964d0efb96885dd0078a35df0e6dde849fd414a9bb7d21603e14727a33ec3f1",
+  "build_id": "acdfd0516bdb8ea87bc4b80c2f8733eff705ee7e9414e9fb4823faceb295db93",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -442,7 +442,7 @@
     "inputs/cpu-pilot-0.bin.gz": "4e874b5681593f1db4c52256f2a3c443e691986cf98729f20f1aa3bb4ad181d4",
     "inputs/cpu-full-0.bin.gz": "0b80b6a5f2e4ac630df3ebf9b166385cc6a9527c00783117efa7b4f23c684538",
     "inputs/cpu-full-1.bin.gz": "1533ecce91e477414599c7478b8e63d6df8baa2c7b0fb89d07e8e4446fa51da7",
-    "bin/window-tick": "22b7a765174fbfd6e088da7485aec397c7f30dd30eff8b163345e6bfc5a9b9c9",
+    "bin/window-tick": "588705ec11afa29e386d8bac5729db1aa788e8f2d5c71e418bf6428f3e29d6ca",
     "bin/window-tick.metallib": "c743f011e727a2defffdf56e906d14116960c2467e6cccb6885d794dffbf9137",
     ".github/workflows/window-tick.yml": "7d03678c42b7f8a8e8240eb8152303a5840c5251d393cbef2b4f9eb829937c9e"
   }
