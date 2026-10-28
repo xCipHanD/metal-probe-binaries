@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "1051c74975bc6827b5c4c87bf682ad1399b012b8b09eac5cc032ae71b7fc8cd8",
+  "build_id": "b90b8742040e6eedad06af63c67b16dab8dfbc6d6ef251fa27dfffa463b1af48",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -445,7 +445,7 @@
     "bin/window-tick": "f58a1d100e6322ded69587ac6c776e3dcd7e5894f1f100347086fdeafb0f3928",
     "bin/window-tick.metallib": "c743f011e727a2defffdf56e906d14116960c2467e6cccb6885d794dffbf9137",
     ".github/workflows/window-tick.yml": "f6d09191dc420746ebb62967dba8651e3323944427ff7d8e549ec699f3e0f81c",
-    "bin/window-present": "7b53197bfb91d60a30d7a7204f2caa831776db71072bef18a638f7446e3518a6",
+    "bin/window-present": "2c7a122bea900ea8c9fe7bfbf63a7e93bc722563b1cfc7b6d5ea1c74e5a8f281",
     "bin/window-present.metallib": "dc7e41e359098a45a6289da97a3d935b8ba48cc602fda190065da1be3c5cfaa2",
     ".github/workflows/window-present.yml": "a1fcba43917e7ef14f0e012bf1aeaadc1f30b53265c02541c8e398ee5c8db9b3"
   }
