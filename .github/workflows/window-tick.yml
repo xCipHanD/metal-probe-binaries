@@ -2,6 +2,11 @@ name: Measure precompiled window paths
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: Window configuration
+        default: opacity
+        type: choice
+        options: [probe, opacity]
       rounds:
         description: Randomized rounds
         default: '2'
@@ -28,7 +33,7 @@ jobs:
           { sw_vers; uname -m; launchctl managername; } > artifacts/runner.txt
           cp manifest.json artifacts/bundle-manifest.json
           chmod +x bin/window-tick
-          bin/window-tick bin/window-tick.metallib '${{ inputs.rounds }}' probe > artifacts/window.stdout.txt 2> artifacts/window.stderr.txt
+          bin/window-tick bin/window-tick.metallib '${{ inputs.rounds }}' '${{ inputs.mode }}' > artifacts/window.stdout.txt 2> artifacts/window.stderr.txt
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
