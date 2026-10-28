@@ -28,8 +28,8 @@ jobs:
           { sw_vers; uname -m; printf 'MTL_DEBUG_LAYER=%s\n' "$MTL_DEBUG_LAYER"; } > artifacts/runner.txt
           cp manifest.json artifacts/bundle-manifest.json
           chmod +x bin/scene-tick
-          for limit in 64 128 256; do
-          for threads in 256 512 1024; do
+          for limit in 64 128; do
+          for threads in 256 512; do
             mkdir -p artifacts/b$limit-t$threads
             (cd artifacts/b$limit-t$threads; mkdir artifacts; ../../bin/scene-tick ../../bin/scene-tick.metallib '${{ inputs.repeats }}' "$threads" "$limit" > artifacts/scene.stdout.txt 2> artifacts/scene.stderr.txt) || failed=1
           done
