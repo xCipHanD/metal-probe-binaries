@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "build_id": "3d01e3a4a65c5036f8683dd1ae913bda6f194aa059fe8cfa6810124edfbee39a",
+  "build_id": "9bba0f81a9d1afb2eee57b81aa5b918c64c233a2d9f9e3f9d874e93012a25917",
   "target": "macOS arm64 >=14",
   "metal_language": "3.1",
   "cases": {
@@ -441,6 +441,9 @@
     "inputs/tlb-full-1.bin.gz": "143aac269d8eee76dfef567da535fe779e41e02f669e01758d5fa2bc3050772e",
     "inputs/cpu-pilot-0.bin.gz": "4e874b5681593f1db4c52256f2a3c443e691986cf98729f20f1aa3bb4ad181d4",
     "inputs/cpu-full-0.bin.gz": "0b80b6a5f2e4ac630df3ebf9b166385cc6a9527c00783117efa7b4f23c684538",
-    "inputs/cpu-full-1.bin.gz": "1533ecce91e477414599c7478b8e63d6df8baa2c7b0fb89d07e8e4446fa51da7"
+    "inputs/cpu-full-1.bin.gz": "1533ecce91e477414599c7478b8e63d6df8baa2c7b0fb89d07e8e4446fa51da7",
+    "bin/window-tick": "19aa5c365769b7e3639fcdc6a86e18a2f3dae5029a80964b075b3ae2e8ecff21",
+    "bin/window-tick.metallib": "c743f011e727a2defffdf56e906d14116960c2467e6cccb6885d794dffbf9137",
+    ".github/workflows/window-tick.yml": "7d03678c42b7f8a8e8240eb8152303a5840c5251d393cbef2b4f9eb829937c9e"
   }
 }
