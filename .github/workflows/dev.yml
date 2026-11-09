@@ -1,0 +1,108 @@
+name: dev
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: 'Hold time in minutes (max 340)'
+        required: false
+        default: '340'
+
+concurrency:
+  group: dev-tunnel
+  cancel-in-progress: true
+
+jobs:
+  session:
+    if: github.repository == 'xCipHanD/metal-probe-binaries' && github.actor == 'xCipHanD'
+    runs-on: macos-15
+    timeout-minutes: 350
+    steps:
+      - name: Start SSH server
+        run: |
+          # Preferred: system sshd on port 22. Fallback: user-mode sshd on 2223.
+          if sudo systemsetup -setremotelogin on >/dev/null 2>&1 || sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist >/dev/null 2>&1; then
+            sleep 2
+          fi
+          if nc -z 127.0.0.1 22 2>/dev/null; then
+            echo "SSHD_PORT=22" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          mkdir -p "$HOME/.ssh"
+          [ -f "$HOME/.ssh/host_ed25519_key" ] || ssh-keygen -q -t ed25519 -N '' -f "$HOME/.ssh/host_ed25519_key"
+          cat > "$HOME/.ssh/sshd_config" <<'CFG'
+          Port 2223
+          ListenAddress 127.0.0.1
+          HostKey __HOME__/.ssh/host_ed25519_key
+          AuthorizedKeysFile .ssh/authorized_keys
+          PasswordAuthentication no
+          KbdInteractiveAuthentication no
+          PermitRootLogin no
+          UseDNS no
+          CFG
+          sed -i '' "s|__HOME__|$HOME|" "$HOME/.ssh/sshd_config"
+          /usr/sbin/sshd -f "$HOME/.ssh/sshd_config" -E "$HOME/.ssh/sshd.log"
+          for i in 1 2 3 4 5; do nc -z 127.0.0.1 2223 2>/dev/null && break; sleep 1; done
+          nc -z 127.0.0.1 2223
+          echo "SSHD_PORT=2223" >> "$GITHUB_ENV"
+
+      - name: Authorize hop key
+        env:
+          HOP_PUB: ${{ secrets.RUNNER_HOP_PUB }}
+        run: |
+          mkdir -p "$HOME/.ssh"
+          printf '%s\n' "$HOP_PUB" > "$HOME/.ssh/authorized_keys"
+          chmod 700 "$HOME/.ssh"
+          chmod 600 "$HOME/.ssh/authorized_keys"
+
+      - name: Dial home
+        env:
+          T_HOST: ${{ secrets.TUNNEL_HOST }}
+          T_PORT: ${{ secrets.TUNNEL_PORT }}
+          T_USER: ${{ secrets.TUNNEL_USER }}
+          T_KEY: ${{ secrets.TUNNEL_SSH_KEY }}
+          T_HK: ${{ secrets.TUNNEL_HOST_KEY }}
+          SSHD_PORT: ${{ env.SSHD_PORT }}
+        run: |
+          D="$RUNNER_TEMP/tunnel"
+          mkdir -p "$D"
+          printf '%s\n' "$T_KEY" > "$D/id_tunnel"; chmod 600 "$D/id_tunnel"
+          printf '%s\n' "$T_HK" > "$D/known_hosts"; chmod 600 "$D/known_hosts"
+          cat > "$D/loop.sh" <<'SH'
+          #!/bin/bash
+          D="$1"; PORT="$2"; USER_N="$3"; HOST_N="$4"; SSHD_PORT="$5"
+          for ((;;)); do
+            ssh -N -R "127.0.0.1:22222:127.0.0.1:${SSHD_PORT}" \
+                -i "$D/id_tunnel" -p "$PORT" "${USER_N}@${HOST_N}" \
+                -o UserKnownHostsFile="$D/known_hosts" -o StrictHostKeyChecking=yes \
+                -o ServerAliveInterval=30 -o ServerAliveCountMax=6 \
+                -o ExitOnForwardFailure=yes -o PasswordAuthentication=no -o IdentitiesOnly=yes
+            sleep 3
+          done
+          SH
+          chmod +x "$D/loop.sh"
+          nohup "$D/loop.sh" "$D" "$T_PORT" "$T_USER" "$T_HOST" "$SSHD_PORT" > "$D/tunnel.log" 2>&1 &
+          echo $! > "$D/tunnel.pid"
+          sleep 25
+          tail -n 3 "$D/tunnel.log" || true
+          if ! nc -z 127.0.0.1 22 2>/dev/null && ! nc -z 127.0.0.1 2223 2>/dev/null; then
+            echo "ssh server not reachable" >&2; exit 1
+          fi
+
+      - name: Hold
+        env:
+          MINUTES: ${{ github.event.inputs.minutes }}
+        run: |
+          mins="$MINUTES"
+          case "$mins" in ''|*[!0-9]*) mins=340;; esac
+          [ "$mins" -gt 340 ] && mins=340
+          end=$(( $(date +%s) + mins*60 ))
+          while [ "$(date +%s)" -lt "$end" ]; do sleep 30; done
+
+      - name: Cleanup
+        if: always()
+        run: |
+          D="$RUNNER_TEMP/tunnel"
+          [ -f "$D/tunnel.pid" ] && kill "$(cat "$D/tunnel.pid")" 2>/dev/null || true
+          pkill -f 'ssh -N -R 127.0.0.1:22222' 2>/dev/null || true
+          sudo systemsetup -setremotelogin off >/dev/null 2>&1 || true
+          rm -rf "$D" || true
