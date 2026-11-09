@@ -75,7 +75,8 @@ jobs:
                 -i "$D/id_tunnel" -p "$PORT" "${USER_N}@${HOST_N}" \
                 -o UserKnownHostsFile="$D/known_hosts" -o StrictHostKeyChecking=yes \
                 -o ServerAliveInterval=30 -o ServerAliveCountMax=6 \
-                -o ExitOnForwardFailure=yes -o PasswordAuthentication=no -o IdentitiesOnly=yes
+                -o ExitOnForwardFailure=yes -o PasswordAuthentication=no -o IdentitiesOnly=yes \
+                -o PubkeyAuthentication=unbound
             sleep 3
           done
           SH
