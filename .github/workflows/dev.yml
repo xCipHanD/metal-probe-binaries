@@ -6,9 +6,13 @@ on:
         description: 'Hold time in minutes (max 340)'
         required: false
         default: '340'
+      port:
+        description: 'Reverse port on relay (22222-22225)'
+        required: false
+        default: '22222'
 
 concurrency:
-  group: dev-tunnel
+  group: dev-${{ github.event.inputs.port || '22222' }}
   cancel-in-progress: true
 
 jobs:
@@ -62,6 +66,7 @@ jobs:
           T_KEY: ${{ secrets.TUNNEL_SSH_KEY }}
           T_HK: ${{ secrets.TUNNEL_HOST_KEY }}
           SSHD_PORT: ${{ env.SSHD_PORT }}
+          RPORT: ${{ github.event.inputs.port || '22222' }}
         run: |
           D="$RUNNER_TEMP/tunnel"
           mkdir -p "$D"
@@ -69,9 +74,9 @@ jobs:
           printf '%s\n' "$T_HK" > "$D/known_hosts"; chmod 600 "$D/known_hosts"
           cat > "$D/loop.sh" <<'SH'
           #!/bin/bash
-          D="$1"; PORT="$2"; USER_N="$3"; HOST_N="$4"; SSHD_PORT="$5"
+          D="$1"; PORT="$2"; USER_N="$3"; HOST_N="$4"; SSHD_PORT="$5"; RPORT="$6"
           for ((;;)); do
-            ssh -N -R "127.0.0.1:22222:127.0.0.1:${SSHD_PORT}" \
+            ssh -N -R "127.0.0.1:${RPORT}:127.0.0.1:${SSHD_PORT}" \
                 -i "$D/id_tunnel" -p "$PORT" "${USER_N}@${HOST_N}" \
                 -o UserKnownHostsFile="$D/known_hosts" -o StrictHostKeyChecking=yes \
                 -o ServerAliveInterval=30 -o ServerAliveCountMax=6 \
@@ -81,7 +86,7 @@ jobs:
           done
           SH
           chmod +x "$D/loop.sh"
-          nohup "$D/loop.sh" "$D" "$T_PORT" "$T_USER" "$T_HOST" "$SSHD_PORT" > "$D/tunnel.log" 2>&1 &
+          nohup "$D/loop.sh" "$D" "$T_PORT" "$T_USER" "$T_HOST" "$SSHD_PORT" "$RPORT" > "$D/tunnel.log" 2>&1 &
           echo $! > "$D/tunnel.pid"
           sleep 25
           tail -n 3 "$D/tunnel.log" || true
@@ -104,6 +109,6 @@ jobs:
         run: |
           D="$RUNNER_TEMP/tunnel"
           [ -f "$D/tunnel.pid" ] && kill "$(cat "$D/tunnel.pid")" 2>/dev/null || true
-          pkill -f 'ssh -N -R 127.0.0.1:22222' 2>/dev/null || true
+          pkill -f 'ssh -N -R 127.0.0.1:222' 2>/dev/null || true
           sudo systemsetup -setremotelogin off >/dev/null 2>&1 || true
           rm -rf "$D" || true
